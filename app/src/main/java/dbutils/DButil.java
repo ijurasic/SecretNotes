@@ -1,6 +1,7 @@
 package dbutils;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -32,7 +33,22 @@ public class DButil  extends SQLiteOpenHelper {
 
         super(context, DB_NAME, null, 1);
         Log.d("POSITION", "DButil.DButil");
-        dbSecretNotes=this.getWritableDatabase();
+        dbSecretNotes = this.getWritableDatabase();
+    }
+
+    public boolean userExists(String username) {
+
+        boolean userExists = false;
+        Cursor resultSet = dbSecretNotes.rawQuery("select username,password from users", null);
+
+        if (resultSet.getCount() > 0) {
+            userExists = true;
         }
+       /* resultSet.moveToFirst();
+        String username = resultSet.getString(1);
+        String password = resultSet.getString(2);*/
+        return userExists;
+    }
+
 
     }
