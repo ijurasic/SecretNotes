@@ -1,6 +1,5 @@
 package com.example.ivan.secretnotes;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -12,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-import dbutils.DButil;
+import utils.DButil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -125,11 +124,15 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                Toast.makeText(view.getContext(),
-                        "User logged in.", Toast.LENGTH_SHORT)
-                        .show();
-
-
+                if (dbutil.loginUser("USER", pwd)) {
+                    Toast.makeText(view.getContext(),
+                            "User logged in.", Toast.LENGTH_SHORT)
+                            .show();
+                } else {
+                    Toast.makeText(view.getContext(),
+                            "Incorrect password.", Toast.LENGTH_SHORT)
+                            .show();
+                }
             }
         });
 

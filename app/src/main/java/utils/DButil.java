@@ -1,13 +1,12 @@
-package dbutils;
+package utils;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
-
-import com.example.ivan.secretnotes.MainActivity;
 
 /**
  * Created by ivan on 7/25/16.
@@ -54,11 +53,31 @@ public class DButil  extends SQLiteOpenHelper {
     public void createUser(String username, String password) {
         //SQLiteDatabase db = this.getWritableDatabase();
 
+        String hashPwd = Hasher.sha256HexHash(password);
+
         ContentValues values = new ContentValues();
         values.put("username", username);
-        values.put("password", password);
+        values.put("password", hashPwd);
 
         dbSecretNotes.insert("users", null, values);
+    }
+
+    public boolean loginUser(String username, String pwd) {
+        boolean loginOk = false;
+        String hashPwd = Hasher.sha256HexHash(pwd);
+
+        String sql = "select count(*) from users where username=? and password=? ";
+        SQLiteStatement stmt = dbSecretNotes.compileStatement(sql);
+        stmt.bindString(1, username);
+        stmt.bindString(2, hashPwd);
+
+        long count = stmt.simpleQueryForLong();
+
+        if (count > 0) {
+            loginOk = true;
+        }
+
+        return loginOk;
     }
 
 
