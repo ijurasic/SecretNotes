@@ -1,5 +1,6 @@
 package dbutils;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -48,6 +49,16 @@ public class DButil  extends SQLiteOpenHelper {
         String username = resultSet.getString(1);
         String password = resultSet.getString(2);*/
         return userExists;
+    }
+
+    public void createUser(String username, String password) {
+        //SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("username", username);
+        values.put("password", password);
+
+        dbSecretNotes.insert("users", null, values);
     }
 
 
