@@ -1,5 +1,6 @@
 package com.example.ivan.secretnotes;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -125,9 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (dbutil.loginUser("USER", pwd)) {
-                    Toast.makeText(view.getContext(),
-                            "User logged in.", Toast.LENGTH_SHORT)
-                            .show();
+                    startNotesActivity();
                 } else {
                     Toast.makeText(view.getContext(),
                             "Incorrect password.", Toast.LENGTH_SHORT)
@@ -139,5 +138,9 @@ public class MainActivity extends AppCompatActivity {
 
         ll.addView(editPwd, lp);
         ll.addView(btnLogin, lp);
+    }
+
+    public void startNotesActivity() {
+        startActivity(new Intent(MainActivity.this, NotesActivity.class));
     }
 }
