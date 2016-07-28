@@ -20,8 +20,8 @@ public class Notes {
         ContentValues values = new ContentValues();
 
         values.put("user_id", DButil.user_id);
-        values.put("title", title);
-        values.put("note", note);
+        values.put("title", AES.encrypt(title));
+        values.put("note", AES.encrypt(note));
 
         DButil.dbSecretNotes.insert("notes", null, values);
     }
@@ -34,9 +34,9 @@ public class Notes {
         try {
             while (cursor.moveToNext()) {
                 int note_id = cursor.getInt(0);
-                String title = cursor.getString(1);
-                String note = cursor.getString(2);
-                notesList.add(new NoteEntity(note_id, note, title));
+                String title = AES.decrypt(cursor.getString(1));
+                String note = AES.decrypt(cursor.getString(2));
+                notesList.add(new NoteEntity(note_id, title, note));
             }
         } finally {
             cursor.close();
