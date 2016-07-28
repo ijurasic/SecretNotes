@@ -15,6 +15,7 @@ public class DButil  extends SQLiteOpenHelper {
     private static String DB_NAME = "snotes.db";
     public static SQLiteDatabase dbSecretNotes;
     public static String username;
+    public static String password;
     public static Integer user_id;
 
     @Override
@@ -90,9 +91,11 @@ public class DButil  extends SQLiteOpenHelper {
             * so every other class can access them*/
             this.username = username;
             user_id = Integer.valueOf((int) ret_user_id);
+            this.password = pwd;
         } else {
             this.username = null;
             user_id = null;
+            this.password = null;
         }
 
         return loginOk;

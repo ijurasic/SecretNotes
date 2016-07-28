@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import utils.AES;
 import utils.DButil;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
                             .show();
                     return;
                 }
+                if (pwd.length() > 10) {
+                    Toast.makeText(view.getContext(),
+                            "Maximum password length is 10.", Toast.LENGTH_SHORT)
+                            .show();
+                    return;
+                }
                 if (pwd.equals(repeatPwd) == false) {
                     Toast.makeText(view.getContext(),
                             "Repeat password does not match.", Toast.LENGTH_SHORT)
@@ -127,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (dbutil.loginUser("USER", pwd)) {
                     startNotesActivity();
+                    editPwd.setText("");
                 } else {
                     Toast.makeText(view.getContext(),
                             "Incorrect password.", Toast.LENGTH_SHORT)

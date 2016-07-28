@@ -23,7 +23,17 @@ public class NotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-        List<String> notesList = Notes.getAllNotes();
+        refreshNotesListView();
+    }
+
+    public void onBtnNewNoteClick(View view) {
+        startActivity(new Intent(NotesActivity.this, CreateNoteActivity.class));
+    }
+
+    public void refreshNotesListView() {
+        Notes.getAllNotes();
+
+        List<String> notesList = Notes.getAllNoteTitles();
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, notesList);
 
@@ -37,9 +47,5 @@ public class NotesActivity extends AppCompatActivity {
                 Toast.makeText(NotesActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public void onBtnNewNoteClick(View view) {
-        startActivity(new Intent(NotesActivity.this, CreateNoteActivity.class));
     }
 }
