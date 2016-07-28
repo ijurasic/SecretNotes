@@ -10,16 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ivan.secretnotes.NotesActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NEW NOTE"
-        android:id="@+id/btnCreateNote"
-        android:nestedScrollingEnabled="false"
-        android:onClick="onBtnNewNoteClick" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="58dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NEW NOTE"
+            android:id="@+id/btnCreateNote"
+            android:nestedScrollingEnabled="false"
+            android:onClick="onBtnNewNoteClick" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGOUT"
+            android:id="@+id/btnLogout"
+            android:background="@color/colorPrimary"
+            android:onClick="onBtnLogoutClick" />
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView" />
+
 </LinearLayout>
