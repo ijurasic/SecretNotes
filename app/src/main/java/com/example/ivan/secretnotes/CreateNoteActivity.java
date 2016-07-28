@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import utils.DButil;
 import utils.Notes;
@@ -25,7 +26,10 @@ public class CreateNoteActivity extends AppCompatActivity {
         String note = ((EditText) findViewById(R.id.editTextNote)).getText().toString();
 
         Notes.insertNote(title, note);
-
+        Toast.makeText(view.getContext(),
+                "Note created.", Toast.LENGTH_SHORT)
+                .show();
+        this.finish();
 
     }
 

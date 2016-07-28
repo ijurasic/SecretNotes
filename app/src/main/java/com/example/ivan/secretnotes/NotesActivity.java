@@ -17,6 +17,7 @@ import utils.Notes;
 import static android.widget.Toast.LENGTH_SHORT;
 
 public class NotesActivity extends AppCompatActivity {
+    public final static int REQUEST_CODE_CREATE_NEW_ACTIVITY = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,9 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     public void onBtnNewNoteClick(View view) {
-        startActivity(new Intent(NotesActivity.this, CreateNoteActivity.class));
+        //startActivity(new Intent(NotesActivity.this, CreateNoteActivity.class));
+        Intent i = new Intent(this, CreateNoteActivity.class);
+        startActivityForResult(i, REQUEST_CODE_CREATE_NEW_ACTIVITY);
     }
 
     public void refreshNotesListView() {
@@ -47,5 +50,13 @@ public class NotesActivity extends AppCompatActivity {
                 Toast.makeText(NotesActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_CREATE_NEW_ACTIVITY:
+                refreshNotesListView();
+        }
     }
 }
