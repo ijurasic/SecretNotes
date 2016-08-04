@@ -26,6 +26,20 @@ public class Notes {
         DButil.dbSecretNotes.insert("notes", null, values);
     }
 
+    public static void updateNote(Integer id, String title, String note) {
+        String filter = "id=" + id;
+        ContentValues values = new ContentValues();
+        values.put("title", AES.encrypt(title));
+        values.put("note", AES.encrypt(note));
+
+        DButil.dbSecretNotes.update("notes", values, filter, null);
+    }
+
+    public static void deleteNote(Integer id) {
+        String filter = "id=" + id;
+        DButil.dbSecretNotes.delete("notes", filter, null);
+    }
+
     public static void getAllNotes() {
         notesList = new ArrayList<NoteEntity>();
 

@@ -29,6 +29,13 @@ public class NotesActivity extends AppCompatActivity {
 
     public void onBtnNewNoteClick(View view) {
         //startActivity(new Intent(NotesActivity.this, CreateNoteActivity.class));
+        CreateNoteActivity.note_position = null;
+        Intent i = new Intent(this, CreateNoteActivity.class);
+        startActivityForResult(i, REQUEST_CODE_CREATE_NEW_ACTIVITY);
+    }
+
+    public void onNoteClick(Integer note_pos) {
+        CreateNoteActivity.note_position = note_pos;
         Intent i = new Intent(this, CreateNoteActivity.class);
         startActivityForResult(i, REQUEST_CODE_CREATE_NEW_ACTIVITY);
     }
@@ -47,7 +54,8 @@ public class NotesActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                Toast.makeText(NotesActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(NotesActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                onNoteClick(position);
             }
         });
     }
@@ -58,5 +66,9 @@ public class NotesActivity extends AppCompatActivity {
             case REQUEST_CODE_CREATE_NEW_ACTIVITY:
                 refreshNotesListView();
         }
+    }
+
+    public void onBtnLogoutClick(View view) {
+        this.finish();
     }
 }

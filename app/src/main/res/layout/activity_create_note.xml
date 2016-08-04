@@ -25,12 +25,41 @@
         android:hint="Type your note here.."
         android:textAlignment="viewStart"
         android:id="@+id/editTextNote"
-        android:layout_weight="0.76" />
+        android:layout_weight="0.21" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CREATE"
-        android:id="@+id/btnCreateNote"
-        android:onClick="onBtnCreateNoteClick" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="59dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CREATE"
+            android:id="@+id/btnCreateNote"
+            android:onClick="onBtnCreateNoteClick" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DELETE"
+            android:id="@+id/btnDeleteNote"
+            android:background="@android:color/holo_red_dark"
+            android:layout_marginRight="10px"
+            android:onClick="onBtnDeleteNote" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANCEL"
+            android:id="@+id/btnCancelCreateNote"
+            android:onClick="onBtnCancelCreateNote"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
+
 </LinearLayout>
