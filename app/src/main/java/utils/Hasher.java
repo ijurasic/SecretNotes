@@ -1,5 +1,6 @@
 package utils;
 
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -27,7 +28,7 @@ public class Hasher {
         String hexHash = null;
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+            byte[] hash = digest.digest(input.getBytes(Charset.forName("UTF-8")));
 
             hexHash = bytesToHex(hash).toLowerCase();
         } catch (Exception ex) {

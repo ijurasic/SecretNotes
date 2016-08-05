@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btnRegister = new Button(this);
-        btnRegister.setText("Create");
+        btnRegister.setText("Create user");
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
