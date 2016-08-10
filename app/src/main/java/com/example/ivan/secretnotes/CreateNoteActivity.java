@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +27,9 @@ public class CreateNoteActivity extends AppCompatActivity {
         Button btnCreateNote = (Button) findViewById(R.id.btnCreateNote);
         Button btnDeleteNote = (Button) findViewById(R.id.btnDeleteNote);
 
+        EditText editTextCaption = (EditText) findViewById(R.id.editTextTitle);
+        EditText editTextNoteText = (EditText) findViewById(R.id.editTextNote);
+
         if (note_position == null) {
             //user clicked on create new note button
             btnCreateNote.setText("Create");
@@ -33,14 +37,20 @@ public class CreateNoteActivity extends AppCompatActivity {
         } else {
             //user clicked on existing note..
 
-            EditText editTextCaption = (EditText) findViewById(R.id.editTextTitle);
-            EditText editTextNoteText = (EditText) findViewById(R.id.editTextNote);
+            editTextCaption = (EditText) findViewById(R.id.editTextTitle);
+            editTextNoteText = (EditText) findViewById(R.id.editTextNote);
 
             editTextCaption.setText(Notes.notesList.get(note_position).title);
             editTextNoteText.setText(Notes.notesList.get(note_position).note);
 
             btnCreateNote.setText("Update");
             btnDeleteNote.setVisibility(View.VISIBLE);
+        }
+                /*this lines are necessary to show keyboard on the screen*/
+
+
+        if (editTextCaption.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
 

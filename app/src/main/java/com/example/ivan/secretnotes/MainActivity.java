@@ -1,11 +1,14 @@
 package com.example.ivan.secretnotes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -105,6 +108,14 @@ public class MainActivity extends AppCompatActivity {
         ll.addView(editPwd, lp);
         ll.addView(editRepeatPwd, lp);
         ll.addView(btnRegister, lp);
+
+        /*this lines are necessary to show keyboard on the screen*/
+        if (editPwd.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+
+
+
     }
 
 
@@ -145,8 +156,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         ll.addView(editPwd, lp);
         ll.addView(btnLogin, lp);
+
+
+        /*this lines are necessary to show keyboard on the screen*/
+        if (editPwd.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+
+
     }
 
     public void startNotesActivity() {
