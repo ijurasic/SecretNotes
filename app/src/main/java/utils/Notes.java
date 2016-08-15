@@ -3,8 +3,6 @@ package utils;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import com.example.ivan.secretnotes.NotesActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 

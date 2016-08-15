@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ivan.secretnotes.CreateNoteActivity"
+    tools:context="ijura.software.secretnotes.CreateNoteActivity"
     android:weightSum="1">
 
     <EditText
@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:text="CREATE"
             android:id="@+id/btnCreateNote"
-            android:onClick="onBtnCreateNoteClick" />
+            android:onClick="onBtnCreateNoteClick"
+            android:background="@android:color/holo_blue_dark" />
 
         <View
             android:layout_width="0dp"
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="DELETE"
             android:id="@+id/btnDeleteNote"
-            android:background="@android:color/holo_red_dark"
+            android:background="@android:color/darker_gray"
             android:layout_marginRight="10px"
             android:onClick="onBtnDeleteNote" />
 
@@ -59,7 +60,7 @@
             android:text="CANCEL"
             android:id="@+id/btnCancelCreateNote"
             android:onClick="onBtnCancelCreateNote"
-            android:background="@color/colorPrimary" />
+            android:background="@android:color/holo_blue_light" />
     </LinearLayout>
 
 </LinearLayout>

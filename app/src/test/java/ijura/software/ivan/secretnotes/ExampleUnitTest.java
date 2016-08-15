@@ -1,4 +1,4 @@
-package com.example.ivan.secretnotes;
+package ijura.software.ivan.secretnotes;
 
 import org.junit.Test;
 

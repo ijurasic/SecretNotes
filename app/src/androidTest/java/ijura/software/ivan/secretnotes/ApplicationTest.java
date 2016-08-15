@@ -1,4 +1,4 @@
-package com.example.ivan.secretnotes;
+package ijura.software.ivan.secretnotes;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

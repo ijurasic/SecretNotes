@@ -1,8 +1,6 @@
-package com.example.ivan.secretnotes;
+package ijura.software.secretnotes;
 
-import android.content.ContentValues;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import utils.DButil;
+
 import utils.Notes;
 
 public class CreateNoteActivity extends AppCompatActivity {
@@ -24,11 +22,11 @@ public class CreateNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        Button btnCreateNote = (Button) findViewById(R.id.btnCreateNote);
-        Button btnDeleteNote = (Button) findViewById(R.id.btnDeleteNote);
+        Button btnCreateNote = (Button) findViewById(ijura.software.secretnotes.R.id.btnCreateNote);
+        Button btnDeleteNote = (Button) findViewById(ijura.software.secretnotes.R.id.btnDeleteNote);
 
-        EditText editTextCaption = (EditText) findViewById(R.id.editTextTitle);
-        EditText editTextNoteText = (EditText) findViewById(R.id.editTextNote);
+        EditText editTextCaption = (EditText) findViewById(ijura.software.secretnotes.R.id.editTextTitle);
+        EditText editTextNoteText = (EditText) findViewById(ijura.software.secretnotes.R.id.editTextNote);
 
         if (note_position == null) {
             //user clicked on create new note button
@@ -37,8 +35,8 @@ public class CreateNoteActivity extends AppCompatActivity {
         } else {
             //user clicked on existing note..
 
-            editTextCaption = (EditText) findViewById(R.id.editTextTitle);
-            editTextNoteText = (EditText) findViewById(R.id.editTextNote);
+            editTextCaption = (EditText) findViewById(ijura.software.secretnotes.R.id.editTextTitle);
+            editTextNoteText = (EditText) findViewById(ijura.software.secretnotes.R.id.editTextNote);
 
             editTextCaption.setText(Notes.notesList.get(note_position).title);
             editTextNoteText.setText(Notes.notesList.get(note_position).note);
@@ -58,8 +56,8 @@ public class CreateNoteActivity extends AppCompatActivity {
 
         if (note_position == null) {
             //user is creating a new note
-            String title = ((EditText) findViewById(R.id.editTextTitle)).getText().toString();
-            String note = ((EditText) findViewById(R.id.editTextNote)).getText().toString();
+            String title = ((EditText) findViewById(ijura.software.secretnotes.R.id.editTextTitle)).getText().toString();
+            String note = ((EditText) findViewById(ijura.software.secretnotes.R.id.editTextNote)).getText().toString();
 
             Notes.insertNote(title, note);
             Toast.makeText(view.getContext(),
@@ -68,8 +66,8 @@ public class CreateNoteActivity extends AppCompatActivity {
             this.finish();
         } else {
             //user is saving an existing note
-            String title = ((EditText) findViewById(R.id.editTextTitle)).getText().toString();
-            String note = ((EditText) findViewById(R.id.editTextNote)).getText().toString();
+            String title = ((EditText) findViewById(ijura.software.secretnotes.R.id.editTextTitle)).getText().toString();
+            String note = ((EditText) findViewById(ijura.software.secretnotes.R.id.editTextNote)).getText().toString();
 
             Notes.updateNote(Notes.notesList.get(note_position).id, title, note);
             Toast.makeText(view.getContext(),

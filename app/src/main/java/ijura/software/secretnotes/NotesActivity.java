@@ -1,4 +1,4 @@
-package com.example.ivan.secretnotes;
+package ijura.software.secretnotes;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,14 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.List;
 
-import utils.DButil;
 import utils.Notes;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 public class NotesActivity extends AppCompatActivity {
     public final static int REQUEST_CODE_CREATE_NEW_ACTIVITY = 1;
@@ -22,7 +18,7 @@ public class NotesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notes);
+        setContentView(ijura.software.secretnotes.R.layout.activity_notes);
 
         refreshNotesListView();
     }
@@ -45,9 +41,9 @@ public class NotesActivity extends AppCompatActivity {
 
         List<String> notesList = Notes.getAllNoteTitles();
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_listview, notesList);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, ijura.software.secretnotes.R.layout.activity_listview, notesList);
 
-        ListView listViewNotes = (ListView) findViewById(R.id.listView);
+        ListView listViewNotes = (ListView) findViewById(ijura.software.secretnotes.R.id.listView);
         listViewNotes.setAdapter(adapter);
 
         listViewNotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {

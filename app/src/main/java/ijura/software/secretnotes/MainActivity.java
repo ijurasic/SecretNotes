@@ -1,6 +1,5 @@
-package com.example.ivan.secretnotes;
+package ijura.software.secretnotes;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,14 +7,12 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
-import utils.AES;
 import utils.DButil;
 
 
@@ -29,21 +26,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("POSITION", "MainActivity.onCreate");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(ijura.software.secretnotes.R.layout.activity_main);
 
         dbutil = new DButil(this);
 
 
-        ll = (LinearLayout) findViewById(R.id.linearLayout);
+        ll = (LinearLayout) findViewById(ijura.software.secretnotes.R.id.linearLayout);
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         if (dbutil.userExists(null)) {
             //user exists, create a login screen
-            Log.d("INFO", "User exists.");
+            //Log.d("INFO", "User exists.");
             createLayoutLogin();
         } else {
             //user does not exists, create a register new user screen
-            Log.d("INFO", "User does NOT eists");
+            //Log.d("INFO", "User does NOT eists");
             createLayoutNewUser();
         }
 
@@ -66,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btnRegister = new Button(this);
+        btnRegister.setBackgroundResource(android.R.color.holo_blue_dark);
         btnRegister.setText("Create user");
         btnRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -131,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btnLogin = new Button(this);
+        btnLogin.setBackgroundResource(android.R.color.holo_blue_dark);
         btnLogin.setText("Login");
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

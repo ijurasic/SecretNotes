@@ -1,7 +1,3 @@
 <resources>
-    <string name="app_name">SecretNotes</string>
-
-    <string name="title_activity_notes">NotesActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="app_name">Secret Notes</string>
 </resources>
